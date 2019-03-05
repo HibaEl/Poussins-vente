@@ -5,61 +5,52 @@
  */
 package com.poussin.vente.rest.converter;
 
-import com.poussin.vente.bean.Client;
 import com.poussin.vente.bean.Vente;
 import com.poussin.vente.rest.vo.VenteVo;
+import com.poussin.vente.util.DateUtil;
 import com.poussin.vente.util.NumberUtil;
-import java.util.List;
 
 /**
  *
  * @author hp
  */
-public class VenteConverter extends AbstractConverter <Vente, VenteVo>{
-    
+public class VenteConverter extends AbstractConverter<Vente, VenteVo> {
 
     @Override
     public Vente toItem(VenteVo vo) {
-        if(vo==null){
+        if (vo == null) {
             return null;
+        } else {
+            Vente item = new Vente();
+            item.setId(vo.getId());
+            item.setNbreTotal(NumberUtil.toDouble(vo.getNbreTotal()));
+            item.setReference(vo.getReference());
+            item.setDateVente(DateUtil.parseYYYYMMDDmmhhSS(vo.getDateVente()));
+            item.setPrixTotal(NumberUtil.toDouble(vo.getPrixTotal()));
+            item.setVenteItems(new VenteItemsConverter().toItem(vo.getVenteItems()));
+            item.setClient(new ClientConverter().toItem(vo.getClient()));
+
+            return item;
+
         }
-        else{
-           Vente item=new Vente();
-           item.setId(vo.getId());
-           item.setNbreTotal(NumberUtil.toDouble(vo.getNbreTotal()));
-           item.setReference(vo.getReference());
-           //item.setDateVente(vo.getDateVente());
-           item.setPrixTotal(NumberUtil.toDouble(vo.getPrixTotal()));
-           //item.setVenteItems(new VenteItemsConverter().toItem(vo.getVenteItemsVo()));
-           //item.setClient(new ClientConverter().toItem(vo.getClientVo()));
-           
-           return item;
-
-           
-            
-         }
-     }
-
-    /*@Override
-    public VenteVo toVo(Vente item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public List<Vente> toItem(List<VenteVo> vos) {
-        return null;
-    }
-
-    @Override
-    public List<Vente> toVo(List<Vente> items) {
-        return null;
-    }*/
-
-
 
     @Override
     public VenteVo toVo(Vente item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (item == null) {
+            return null;
+        } else {
+            VenteVo vo = new VenteVo();
+            vo.setDateVente(DateUtil.formatYYYYMMDDmmhhSS(item.getDateVente()));
+            vo.setId(item.getId());
+            vo.setNbreTotal(NumberUtil.toString(item.getNbreTotal()));
+            vo.setReference(item.getReference());
+            vo.setPrixTotal(NumberUtil.toString(item.getPrixTotal()));
+            vo.setVenteItems(new VenteItemsConverter().toVo(item.getVenteItems()));
+            vo.setClient(new ClientConverter().toVo(item.getClient()));
+            return vo;
+        }
+
     }
-    
+
 }

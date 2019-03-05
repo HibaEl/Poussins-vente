@@ -14,37 +14,43 @@ import java.util.List;
  *
  * @author hp
  */
-public class VenteItemsConverter extends AbstractConverter<VenteItem, VenteItemVo>{
-    
-    
+public class VenteItemsConverter extends AbstractConverter<VenteItem, VenteItemVo> {
 
     public VenteItemsConverter() {
     }
 
- 
-
     @Override
     public VenteItem toItem(VenteItemVo vo) {
-        
-        if(vo==null){
+
+        if (vo == null) {
             return null;
-        }else{
-            VenteItem item=new VenteItem();
+        } else {
+            VenteItem item = new VenteItem();
             item.setId(vo.getId());
             item.setNbreTotal(NumberUtil.toDouble(vo.getNbreTotal()));
             item.setPoids(NumberUtil.toDouble(vo.getPoids()));
             item.setPrix(NumberUtil.toDouble(vo.getPrix()));
             item.setPrixUnitaire(NumberUtil.toDouble(vo.getPrixUnitaire()));
+            item.setVente(new VenteConverter().toItem(vo.getVenteVo()));
             return item;
-            
+
         }
     }
 
     @Override
     public VenteItemVo toVo(VenteItem item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        if (item == null) {
+            return null;
+        } else {
+            VenteItemVo vo = new VenteItemVo();
+            vo.setId(item.getId());
+            vo.setNbreTotal(NumberUtil.toString(item.getNbreTotal()));
+            vo.setPrixUnitaire(NumberUtil.toString(item.getPrixUnitaire()));
+            vo.setPrix(NumberUtil.toString(item.getPrix()));
+            vo.setVenteVo(new VenteConverter().toVo(item.getVente()));
+            vo.setPoids(NumberUtil.toString(item.getPoids()));
+            return vo;
+        }
 
-  
-    
+    }
 }

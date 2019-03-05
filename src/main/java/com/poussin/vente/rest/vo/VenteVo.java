@@ -20,7 +20,7 @@ public class VenteVo {
     private String reference;
     private String nbreTotal;
     private String dateVente;
-    private String client;
+    private ClientVo clientVo;
     private String prixTotal;
     private List<VenteItemVo> venteItems;
 
@@ -56,12 +56,12 @@ public class VenteVo {
         this.dateVente = dateVente;
     }
 
-    public String getClient() {
-        return client;
+    public ClientVo getClient() {
+        return clientVo;
     }
 
-    public void setClient(String client) {
-        this.client = client;
+    public void setClient(ClientVo clientVo) {
+        this.clientVo = clientVo;
     }
 
     public String getPrixTotal() {

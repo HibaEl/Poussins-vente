@@ -20,4 +20,5 @@ public interface VenteDao extends JpaRepository<Vente,Long>{
  
 
     public Vente findByReference(String reference);
+    //public Vente findBy
 }

@@ -8,10 +8,12 @@ package com.poussin.vente.service.impl;
 import com.poussin.vente.bean.Vente;
 import com.poussin.vente.bean.VenteItem;
 import com.poussin.vente.dao.VenteDao;
+import com.poussin.vente.rest.vo.VenteVo;
 import com.poussin.vente.service.VenteItemService1;
 import com.poussin.vente.service.VenteService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 /**
@@ -31,6 +33,9 @@ public class VenteServiceImpl implements VenteService {
     public Vente findByReference(String reference) {
         return venteDao.findByReference(reference);
     }
+    
+    
+   
 
     @Override
     public int creer(Vente vente) {
@@ -91,6 +96,13 @@ public class VenteServiceImpl implements VenteService {
             return 1;
         }
 
+    }
+
+
+
+    @Override
+    public Vente creer(VenteVo venteVo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -6,8 +6,11 @@
 package com.poussin.vente.rest;
 
 import com.poussin.vente.bean.Vente;
+import com.poussin.vente.rest.converter.VenteConverter;
+import com.poussin.vente.rest.vo.VenteVo;
 import com.poussin.vente.service.VenteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author siham
  */
 @RestController()
+@CrossOrigin(origins=("http://localhost:4200/"))
 
 
 @RequestMapping({"/vente/ventes"})
@@ -31,14 +35,19 @@ public class VenteRest {
 
     
     @PostMapping("/")
-    public int creer(@RequestBody Vente vente) {
-        return venteService.creer(vente);
+    public int creer(@RequestBody VenteVo venteVo) {
+        VenteConverter venteConverter=new VenteConverter();
+      Vente vente=new VenteConverter().toItem(venteVo);  
+      
+      
+        return  venteService.creer(vente);
     }
     
     
    @GetMapping("/reference/{reference}")
-   public Vente findByReference(@PathVariable String reference) {
-        return venteService.findByReference( reference );
+   public VenteVo findByReference(@PathVariable("reference") String reference) {
+       
+        return new VenteConverter().toVo(venteService.findByReference( reference ));
    }
    
    

@@ -10,14 +10,14 @@ package com.poussin.vente.rest.vo;
  * @author hp
  */
 public class VenteItemVo {
-    
-     private Long id;
+
+    private Long id;
     private String poids;
     private String nbreTotal;
 
     private VenteVo venteVo;
     private String prixUnitaire;
-    private String  prix;
+    private String prix;
 
     public Long getId() {
         return id;
@@ -51,8 +51,6 @@ public class VenteItemVo {
         this.venteVo = venteVo;
     }
 
-
-
     public String getPrixUnitaire() {
         return prixUnitaire;
     }
@@ -68,7 +66,5 @@ public class VenteItemVo {
     public void setPrix(String prix) {
         this.prix = prix;
     }
-    
-    
-    
+
 }
