@@ -33,7 +33,10 @@ public class VenteServiceImpl implements VenteService {
     public Vente findByReference(String reference) {
         return venteDao.findByReference(reference);
     }
-    
+    @Override
+    public List<Vente> findAll() {
+        return venteDao.findAll();
+    }
     
    
 
@@ -104,5 +107,7 @@ public class VenteServiceImpl implements VenteService {
     public Vente creer(VenteVo venteVo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 
 }

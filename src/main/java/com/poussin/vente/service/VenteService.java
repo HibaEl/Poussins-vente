@@ -7,6 +7,7 @@ package com.poussin.vente.service;
 
 import com.poussin.vente.bean.Vente;
 import com.poussin.vente.rest.vo.VenteVo;
+import java.util.List;
 
 /**
  *
@@ -21,6 +22,8 @@ public int calculPrix(Vente vente);
     public Vente findByReference(String reference);
 
     public Vente creer(VenteVo venteVo);
+    
+    public List<Vente>findAll();
     
     
 }
