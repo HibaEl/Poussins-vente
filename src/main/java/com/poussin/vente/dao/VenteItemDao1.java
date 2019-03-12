@@ -5,6 +5,7 @@
  */
 package com.poussin.vente.dao;
 
+import com.poussin.vente.bean.Vente;
 import com.poussin.vente.bean.VenteItem;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,5 +19,5 @@ import org.springframework.stereotype.Repository;
 public interface VenteItemDao1 extends JpaRepository<VenteItem,Long>{
     
 
-    public List<VenteItem> findByVenteReference(String reference);
+    public List<VenteItem> findByVente(Vente vente);
 }

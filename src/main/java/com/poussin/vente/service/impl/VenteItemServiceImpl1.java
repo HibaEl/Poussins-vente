@@ -5,6 +5,7 @@
  */
 package com.poussin.vente.service.impl;
 
+import com.poussin.vente.bean.Vente;
 import com.poussin.vente.bean.VenteItem;
 import com.poussin.vente.dao.VenteItemDao1;
 import com.poussin.vente.service.VenteItemService1;
@@ -22,9 +23,8 @@ public class VenteItemServiceImpl1 implements VenteItemService1{
     @Autowired
     private VenteItemDao1 venteItemDao1;
     
-    @Override
-    public List<VenteItem> findByVenteReference(String reference) {
-        return venteItemDao1.findByVenteReference(reference);
+    public List<VenteItem> findByVente(Vente vente) {
+        return venteItemDao1.findByVente(vente);
     }
 
     @Override
@@ -40,6 +40,11 @@ public class VenteItemServiceImpl1 implements VenteItemService1{
     public void setVenteItemDao1(VenteItemDao1 venteItemDao1) {
         this.venteItemDao1 = venteItemDao1;
     }
+
+    
+   
+
+    
     
     
     

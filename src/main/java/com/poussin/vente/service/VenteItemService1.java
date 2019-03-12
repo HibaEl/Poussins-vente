@@ -5,6 +5,7 @@
  */
 package com.poussin.vente.service;
 
+import com.poussin.vente.bean.Vente;
 import com.poussin.vente.bean.VenteItem;
 import java.util.List;
 
