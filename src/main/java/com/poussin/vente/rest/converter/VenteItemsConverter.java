@@ -8,12 +8,13 @@ package com.poussin.vente.rest.converter;
 import com.poussin.vente.bean.VenteItem;
 import com.poussin.vente.rest.vo.VenteItemVo;
 import com.poussin.vente.util.NumberUtil;
-import java.util.List;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author hp
  */
+@Component
 public class VenteItemsConverter extends AbstractConverter<VenteItem, VenteItemVo> {
 
     public VenteItemsConverter() {

@@ -7,11 +7,13 @@ package com.poussin.vente.rest.converter;
 
 import com.poussin.vente.bean.Client;
 import com.poussin.vente.rest.vo.ClientVo;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author hp
  */
+@Component
 public class ClientConverter extends AbstractConverter <Client, ClientVo>{
 
     @Override

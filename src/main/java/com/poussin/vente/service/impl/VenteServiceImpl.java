@@ -9,12 +9,12 @@ import com.poussin.vente.bean.Vente;
 import com.poussin.vente.bean.VenteItem;
 import com.poussin.vente.dao.VenteDao;
 import com.poussin.vente.rest.vo.VenteVo;
-import com.poussin.vente.service.VenteItemService1;
 import com.poussin.vente.service.VenteService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+import com.poussin.vente.service.VenteItemService;
 
 /**
  *
@@ -27,7 +27,7 @@ public class VenteServiceImpl implements VenteService {
     private VenteDao venteDao;
 
     @Autowired
-    private VenteItemService1 venteItemService1;
+    private VenteItemService venteItemService1;
 
     @Override
     public Vente findByReference(String reference) {
@@ -73,11 +73,11 @@ public class VenteServiceImpl implements VenteService {
         this.venteDao = venteDao;
     }
 
-    public VenteItemService1 getVenteItemService1() {
+    public VenteItemService getVenteItemService1() {
         return venteItemService1;
     }
 
-    public void setVenteItemService1(VenteItemService1 venteItemService1) {
+    public void setVenteItemService1(VenteItemService venteItemService1) {
         this.venteItemService1 = venteItemService1;
     }
 

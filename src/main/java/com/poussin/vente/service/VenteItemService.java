@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author siham
  */
-public interface VenteItemService1 {
+public interface VenteItemService {
     
     public List<VenteItem> findByVenteReference(String reference);
     public int creer(VenteItem venteItem);

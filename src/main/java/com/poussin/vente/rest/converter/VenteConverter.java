@@ -9,11 +9,13 @@ import com.poussin.vente.bean.Vente;
 import com.poussin.vente.rest.vo.VenteVo;
 import com.poussin.vente.util.DateUtil;
 import com.poussin.vente.util.NumberUtil;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author hp
  */
+@Component
 public class VenteConverter extends AbstractConverter<Vente, VenteVo> {
 
     @Override

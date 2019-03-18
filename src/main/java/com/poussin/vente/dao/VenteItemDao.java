@@ -16,8 +16,8 @@ import org.springframework.stereotype.Repository;
  * @author siham
  */
 @Repository
-public interface VenteItemDao1 extends JpaRepository<VenteItem,Long>{
+public interface VenteItemDao extends JpaRepository<VenteItem,Long>{
     
 
-    public List<VenteItem> findByVente(Vente vente);
+    public List<VenteItem> findByVenteReference(String reference);
 }
