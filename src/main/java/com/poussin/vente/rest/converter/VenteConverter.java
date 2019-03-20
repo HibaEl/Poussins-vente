@@ -9,6 +9,7 @@ import com.poussin.vente.bean.Vente;
 import com.poussin.vente.rest.vo.VenteVo;
 import com.poussin.vente.util.DateUtil;
 import com.poussin.vente.util.NumberUtil;
+import java.util.Date;
 import org.springframework.stereotype.Component;
 
 /**
@@ -27,7 +28,11 @@ public class VenteConverter extends AbstractConverter<Vente, VenteVo> {
             item.setId(vo.getId());
             item.setNbreTotal(NumberUtil.toDouble(vo.getNbreTotal()));
             item.setReference(vo.getReference());
-            item.setDateVente(DateUtil.parseYYYYMMDDmmhhSS(vo.getDateVente()));
+            if(vo.getDateVente()==null){
+                item.setDateVente(new Date());
+            }else{
+                item.setDateVente(DateUtil.parse(vo.getDateVente()));
+            }
             item.setPrixTotal(NumberUtil.toDouble(vo.getPrixTotal()));
             item.setVenteItems(new VenteItemsConverter().toItem(vo.getVenteItems()));
             item.setClient(new ClientConverter().toItem(vo.getClient()));
@@ -43,7 +48,7 @@ public class VenteConverter extends AbstractConverter<Vente, VenteVo> {
             return null;
         } else {
             VenteVo vo = new VenteVo();
-            vo.setDateVente(DateUtil.formatYYYYMMDDmmhhSS(item.getDateVente()));
+            vo.setDateVente(DateUtil.formateDate("yyyy-MM-dd",item.getDateVente()));
             vo.setId(item.getId());
             vo.setNbreTotal(NumberUtil.toString(item.getNbreTotal()));
             vo.setReference(item.getReference());

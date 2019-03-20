@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import com.poussin.vente.service.VenteItemService;
+import java.util.Date;
 
 /**
  *
@@ -50,6 +51,7 @@ public class VenteServiceImpl implements VenteService {
             return -2;
         } else {
             calculPrix(vente);
+            vente.setDateVente(new Date());
             
             venteDao.save(vente);
             List<VenteItem> venteItems = vente.getVenteItems();

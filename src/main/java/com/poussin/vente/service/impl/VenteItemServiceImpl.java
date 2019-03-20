@@ -29,6 +29,7 @@ public class VenteItemServiceImpl implements VenteItemService{
 
     @Override
     public int creer(VenteItem venteItem) {
+       
        venteItemDao1.save(venteItem);
         return 1;
     }

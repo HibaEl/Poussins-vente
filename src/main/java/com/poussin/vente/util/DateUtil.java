@@ -4,63 +4,47 @@
  * and open the template in the editor.
  */
 package com.poussin.vente.util;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
-
+/**
+ *
+ * @author LENOVO
+ */
 public class DateUtil {
+    public static String formateDate(String pattern, Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        if (date != null) {
+            return simpleDateFormat.format(date);
+        } else {
+            return "";
+        }
+    }
 
-	public static final String paternYYYYMMDDmmhhSS = "yyyyMMddmmhhss";
-	public static final String paternYYYY_MM_DD_Space_mm_hh_SS = "yyyy-MM-dd HH:mm:ss";
-	public static final String COMMANDE_DATE_PATTERN="dd/MM/yyyy HH:mm:ss";
+    public static Date parse(String date) {
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            return simpleDateFormat.parse(date);
+        } catch (ParseException ex) {
+            return null;
+        }
+    }
 
-	private DateUtil() {
+    public static java.sql.Date convertFormUtilToSql(java.util.Date date) {
+        if (date != null) {
+            return new java.sql.Date(date.getTime());
+        } else {
+            return null;
+        }
+    }
 
-	}
-
-	public static boolean isFormatYYYYMMDDmmhhSS(String date) {
-		return parseYYYYMMDDmmhhSS(date) != null;
-	}
-
-	public static java.util.Date parseCommandeStyle(String date) {
-		return parse(date, COMMANDE_DATE_PATTERN);
-	}
-
-	public static String formatCommandeStyle(java.util.Date date) {
-		return format(date, COMMANDE_DATE_PATTERN);
-	}
-	public static java.util.Date parseYYYYMMDDmmhhSS(String date) {
-		return parse(date, paternYYYYMMDDmmhhSS);
-	}
-	
-	public static String formatYYYYMMDDmmhhSS(java.util.Date date) {
-		return format(date, paternYYYYMMDDmmhhSS);
-	}
-	
-	public static String formatYYYY_MM_DD_Space_mm_hh_SS(java.util.Date date) {
-		return format(date, paternYYYY_MM_DD_Space_mm_hh_SS);
-	}
-
-	public static java.util.Date now() {
-		return new java.util.Date();
-	}
-
-	public static java.util.Date parse(String date, String pattern) {
-		SimpleDateFormat formatter = new SimpleDateFormat(pattern);
-		java.util.Date myParsedDate = null;
-		try {
-			myParsedDate = formatter.parse(date);
-		} catch (ParseException e) {
-		}
-		return myParsedDate;
-	}
-
-	public static String format(java.util.Date date, String pattern) {
-		SimpleDateFormat formatter = new SimpleDateFormat(pattern);
-		return formatter.format(date);
-	}
-
-	public static java.sql.Date convertToSqlDate(java.util.Date date) {
-		return new java.sql.Date(date.getTime());
-	}
+    public static java.sql.Timestamp convertFormUtilToTimestamp(java.util.Date date) {
+        if (date != null) {
+            return new java.sql.Timestamp(date.getTime());
+        } else {
+            return null;
+        }
+    }
 }
