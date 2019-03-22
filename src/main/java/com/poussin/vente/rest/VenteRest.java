@@ -5,13 +5,16 @@
  */
 package com.poussin.vente.rest;
 
+import com.poussin.vente.bean.Client;
 import com.poussin.vente.bean.Vente;
 import com.poussin.vente.bean.VenteItem;
 import com.poussin.vente.rest.converter.AbstractConverter;
 import com.poussin.vente.rest.converter.VenteConverter;
 import com.poussin.vente.rest.converter.VenteItemsConverter;
+import com.poussin.vente.rest.vo.ClientVo;
 import com.poussin.vente.rest.vo.VenteItemVo;
 import com.poussin.vente.rest.vo.VenteVo;
+import com.poussin.vente.service.ClientService;
 import com.poussin.vente.service.VenteService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.poussin.vente.service.VenteItemService;
 
+
 /**
  *
  * @author siham
@@ -34,7 +38,7 @@ import com.poussin.vente.service.VenteItemService;
 @RequestMapping({"/vente/ventes"})
 
 public class VenteRest {
-
+   
     @Autowired
     private VenteService venteService;
 
@@ -48,6 +52,7 @@ public class VenteRest {
     @Qualifier("venteConverter")
     private AbstractConverter<Vente, VenteVo> venteConverter;
 
+    
     @GetMapping("reference/{reference}/vente-items")
     public List<VenteItemVo> findByVente(@PathVariable("reference") String reference) {
         final List<VenteItem> venteItems = venteItemService1.findByVenteReference(reference);
@@ -58,6 +63,9 @@ public class VenteRest {
     public List<VenteVo> findAll() {
         return venteConverter.toVo(venteService.findAll());
     }
+
+   
+    
 
     @PostMapping("/")
     public int creer(@RequestBody VenteVo venteVo) {
@@ -71,7 +79,11 @@ public class VenteRest {
 
         return new VenteConverter().toVo(venteService.findByReference(reference));
     }
+    
 
+  
+
+      
     public VenteService getVenteService() {
         return venteService;
     }
@@ -79,7 +91,7 @@ public class VenteRest {
     public void setVenteService(VenteService venteService) {
         this.venteService = venteService;
     }
-
+  
     public VenteItemService getVenteItemService1() {
         return venteItemService1;
     }

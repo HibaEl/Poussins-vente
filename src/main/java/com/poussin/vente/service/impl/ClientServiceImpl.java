@@ -4,11 +4,24 @@
  * and open the template in the editor.
  */
 package com.poussin.vente.service.impl;
-
+import com.poussin.vente.bean.Client;
+import com.poussin.vente.service.ClientService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.poussin.vente.dao.ClientDao;
 /**
  *
  * @author SOUKAINA
  */
-public class ClientServiceImpl {
+public class ClientServiceImpl implements ClientService {
+
+     @Autowired
+     private ClientDao clientDao;
+
+    @Override
+    public List<Client> findAll() {
+        return clientDao.findAll();
+    }
+
     
 }
