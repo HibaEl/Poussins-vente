@@ -13,8 +13,5 @@ import java.util.List;
  * @author SOUKAINA
  */
 public interface ClientService {
-    
-    
-        public List<Client> findAll();
-    
+    public List<Client> findAll();
 }

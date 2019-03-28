@@ -5,14 +5,17 @@
  */
 package com.poussin.vente.service.impl;
 import com.poussin.vente.bean.Client;
+import com.poussin.vente.dao.ClientDao;
 import com.poussin.vente.service.ClientService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.poussin.vente.dao.ClientDao;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author SOUKAINA
  */
+@Service
 public class ClientServiceImpl implements ClientService {
 
      @Autowired
@@ -22,6 +25,6 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> findAll() {
         return clientDao.findAll();
     }
-
-    
 }
+
+

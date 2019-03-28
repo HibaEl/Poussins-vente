@@ -14,16 +14,14 @@ import java.util.List;
  * @author siham
  */
 public interface VenteService {
-    
-public int creer(Vente vente);
-public int calculPrix(Vente vente);
 
+    public int creer(Vente vente);
+
+    public int calculPrix(Vente vente);
 
     public Vente findByReference(String reference);
 
-    public Vente creer(VenteVo venteVo);
-    
-    public List<Vente>findAll();
-    
-    
+    public List<Vente> findAll();
+    public void deleteByReference(String reference);
+
 }

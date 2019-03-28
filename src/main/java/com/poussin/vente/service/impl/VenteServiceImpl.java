@@ -47,8 +47,7 @@ public class VenteServiceImpl implements VenteService {
         Vente v = findByReference(vente.getReference());
         if (v != null) {
             return -1;
-        } else if (vente.getVenteItems() == null) {
-            return -2;
+ 
         } else {
             calculPrix(vente);
             vente.setDateVente(new Date());
@@ -103,12 +102,12 @@ public class VenteServiceImpl implements VenteService {
 
     }
 
-
-
     @Override
-    public Vente creer(VenteVo venteVo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteByReference(String reference) {
+        Vente vente =venteDao.findByReference(reference);
+        venteDao.delete(vente);
     }
+
 
 
 

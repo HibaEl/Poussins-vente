@@ -14,7 +14,6 @@ import com.poussin.vente.rest.converter.VenteItemsConverter;
 import com.poussin.vente.rest.vo.ClientVo;
 import com.poussin.vente.rest.vo.VenteItemVo;
 import com.poussin.vente.rest.vo.VenteVo;
-import com.poussin.vente.service.ClientService;
 import com.poussin.vente.service.VenteService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.poussin.vente.service.VenteItemService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 
 /**
@@ -78,6 +78,10 @@ public class VenteRest {
     public VenteVo findByReference(@PathVariable("reference") String reference) {
 
         return new VenteConverter().toVo(venteService.findByReference(reference));
+    }
+    @DeleteMapping("/{reference}")
+    public void deleteByReference(@PathVariable("reference")String reference){
+        venteService.deleteByReference(reference);
     }
     
 

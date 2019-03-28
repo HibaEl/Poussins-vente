@@ -34,7 +34,7 @@ public class VenteConverter extends AbstractConverter<Vente, VenteVo> {
                 item.setDateVente(DateUtil.parse(vo.getDateVente()));
             }
             item.setPrixTotal(NumberUtil.toDouble(vo.getPrixTotal()));
-            item.setVenteItems(new VenteItemsConverter().toItem(vo.getVenteItems()));
+            item.setVenteItems(new VenteItemsConverter().toItem(vo.getVenteItemsVo()));
             item.setClient(new ClientConverter().toItem(vo.getClient()));
 
             return item;
@@ -53,7 +53,7 @@ public class VenteConverter extends AbstractConverter<Vente, VenteVo> {
             vo.setNbreTotal(NumberUtil.toString(item.getNbreTotal()));
             vo.setReference(item.getReference());
             vo.setPrixTotal(NumberUtil.toString(item.getPrixTotal()));
-            vo.setVenteItems(new VenteItemsConverter().toVo(item.getVenteItems()));
+            vo.setVenteItemsVo(new VenteItemsConverter().toVo(item.getVenteItems()));
             vo.setClient(new ClientConverter().toVo(item.getClient()));
             return vo;
         }

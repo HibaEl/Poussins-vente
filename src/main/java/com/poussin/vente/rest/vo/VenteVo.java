@@ -6,9 +6,6 @@
 package com.poussin.vente.rest.vo;
 
 import java.util.List;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
 
 /**
  *
@@ -22,7 +19,7 @@ public class VenteVo {
     private String dateVente;
     private ClientVo clientVo;
     private String prixTotal;
-    private List<VenteItemVo> venteItems;
+    private List<VenteItemVo> venteItemsVo;
 
     public Long getId() {
         return id;
@@ -72,13 +69,23 @@ public class VenteVo {
         this.prixTotal = prixTotal;
     }
 
-    public List<VenteItemVo> getVenteItems() {
-        return venteItems;
+    public ClientVo getClientVo() {
+        return clientVo;
     }
 
-    public void setVenteItems(List<VenteItemVo> venteItems) {
-        this.venteItems = venteItems;
+    public void setClientVo(ClientVo clientVo) {
+        this.clientVo = clientVo;
     }
+
+    public List<VenteItemVo> getVenteItemsVo() {
+        return venteItemsVo;
+    }
+
+    public void setVenteItemsVo(List<VenteItemVo> venteItemsVo) {
+        this.venteItemsVo = venteItemsVo;
+    }
+
+  
     
     
     

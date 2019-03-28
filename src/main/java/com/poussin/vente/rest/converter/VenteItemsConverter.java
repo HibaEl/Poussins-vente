@@ -32,7 +32,7 @@ public class VenteItemsConverter extends AbstractConverter<VenteItem, VenteItemV
             item.setPoids(NumberUtil.toDouble(vo.getPoids()));
             item.setPrix(NumberUtil.toDouble(vo.getPrix()));
             item.setPrixUnitaire(NumberUtil.toDouble(vo.getPrixUnitaire()));
-            item.setVente(new VenteConverter().toItem(vo.getVenteVo()));
+           // item.setVente(new VenteConverter().toItem(vo.getVenteVo()));
             return item;
 
         }
